@@ -1,0 +1,6 @@
+when Im done w a edit add:
+git add .
+git commit -m "Update portfolio with new achievements"
+git push
+
+in terminal

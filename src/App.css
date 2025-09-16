@@ -12,132 +12,24 @@ body {
 }
 
 .App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.header {
+main {
+  flex: 1;
+}
+
+/* Utility classes */
+.text-center {
   text-align: center;
-  padding: 40px 0;
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
-  color: white;
-  border-radius: 10px;
-  margin-bottom: 30px;
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
 
-.about {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-.about h2 {
-  color: #6e8efb;
-  margin-bottom: 15px;
-}
-
-.achievements {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-.achievements h2 {
-  color: #6e8efb;
-  margin-bottom: 20px;
-}
-
-.achievement-form {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
-
-.achievement-form h3 {
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.achievement-form input,
-.achievement-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: inherit;
-}
-
-.achievement-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.achievement-form button {
-  background: #6e8efb;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-
-.achievement-form button:hover {
-  background: #5a7de0;
-}
-
-.achievements-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.achievement-card {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  border-left: 4px solid #a777e3;
-}
-
-.achievement-card h3 {
-  color: #6e8efb;
-  margin-bottom: 10px;
-}
-
-.achievement-card .date {
-  color: #777;
-  font-size: 0.9rem;
-}
-
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-}
-
-@media (max-width: 768px) {
-  .App {
-    padding: 10px;
-  }
-  
-  .header h1 {
-    font-size: 2rem;
-  }
-  
-  .achievements-list {
-    grid-template-columns: 1fr;
-  }
-}
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }

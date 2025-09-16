@@ -1,29 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AchievementForm from '../components/AchievementForm';
 import AchievementList from '../components/AchievementList';
 import './Pages.css';
 
-const Home = () => {
-  const [achievements, setAchievements] = useState([
-    { id: 1, title: "React Project", description: "Built a responsive web application", date: "2023-05-15" },
-    { id: 2, title: "JavaScript Certification", description: "Completed advanced JS course", date: "2023-03-10" }
-  ]);
+const Home = ({ achievements, onAddAchievement }) => {
+  const [animated, setAnimated] = useState(false);
 
-  const addAchievement = (achievement) => {
-    const newAchievement = {
-      id: achievements.length + 1,
-      ...achievement,
-      date: new Date().toISOString().split('T')[0]
+  useEffect(() => {
+    // Trigger animations after component mounts
+    setAnimated(true);
+    
+    // Add scroll animation for elements
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        if (elementPosition < screenPosition) {
+          element.classList.add('visible');
+        }
+      });
     };
-    setAchievements([...achievements, newAchievement]);
-  };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on initial load
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="page">
       <section className="hero">
         <div className="container">
-          <h1>Welcome to My Portfolio</h1>
-          <p>A showcase of my projects, skills, and achievements</p>
+          <div className={`hero-content ${animated ? 'animate' : ''}`}>
+            <h1 className="hero-heading">Hello, I'm Alex Johnson</h1>
+            <p className="hero-subheading">A passionate Frontend Developer & UI/UX Designer with a focus on creating immersive web experiences.</p>
+            <a href="#achievements" className="btn">View My Work</a>
+          </div>
         </div>
       </section>
 
@@ -35,10 +50,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="achievements">
+      <section id="achievements" className="achievements">
         <div className="container">
-          <h2>My Achievements</h2>
-          <AchievementForm onAdd={addAchievement} />
+          <h2 className="section-title">My Achievements</h2>
+          <AchievementForm onAdd={onAddAchievement} />
           <AchievementList achievements={achievements} />
         </div>
       </section>

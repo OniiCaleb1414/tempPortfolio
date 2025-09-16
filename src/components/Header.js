@@ -12,9 +12,8 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <Link to="/" className="logo">My Portfolio</Link>
+        <Link to="/" className="logo">DevPortfolio</Link>
         
-        {/* Hamburger menu for mobile - inspired by ReactBits */}
         <button 
           className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}

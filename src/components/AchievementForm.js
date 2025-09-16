@@ -23,7 +23,7 @@ const AchievementForm = ({ onAdd }) => {
   };
 
   return (
-    <div className="achievement-form">
+    <div className="achievement-form fade-in">
       <h3>Add New Achievement</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -43,7 +43,7 @@ const AchievementForm = ({ onAdd }) => {
             onChange={handleChange}
           ></textarea>
         </div>
-        <button type="submit">Add Achievement</button>
+        <button type="submit" className="btn">Add Achievement</button>
       </form>
     </div>
   );

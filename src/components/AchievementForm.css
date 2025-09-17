@@ -3,6 +3,7 @@
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 

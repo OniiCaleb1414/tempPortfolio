@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import AchievementForm from '../components/AchievementForm';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import AchievementList from '../components/AchievementList';
+import Typewriter from '../components/Typewriter';
+import ParticlesBackground from '../components/ParticlesBackground';
 import './Pages.css';
 
-const Home = ({ achievements, onAddAchievement }) => {
-  const [animated, setAnimated] = useState(false);
-
+const Home = ({ achievements }) => {
   useEffect(() => {
-    // Trigger animations after component mounts
-    setAnimated(true);
-    
-    // Add scroll animation for elements
     const handleScroll = () => {
       const elements = document.querySelectorAll('.fade-in');
       elements.forEach(element => {
@@ -23,41 +19,100 @@ const Home = ({ achievements, onAddAchievement }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on initial load
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
-    <div className="page">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="page"
+    >
       <section className="hero">
+        <ParticlesBackground />
         <div className="container">
-          <div className={`hero-content ${animated ? 'animate' : ''}`}>
-            <h1 className="hero-heading">Hello, I'm Alex Johnson</h1>
-            <p className="hero-subheading">A passionate Frontend Developer & UI/UX Designer with a focus on creating immersive web experiences.</p>
-            <a href="#achievements" className="btn">View My Work</a>
-          </div>
+          <motion.div 
+            className="hero-content"
+            variants={itemVariants}
+          >
+            <h1 className="hero-heading">
+              <Typewriter 
+                text="Hello, I'm Alex Johnson" 
+                delay={100} 
+                infinite={false}
+              />
+            </h1>
+            <p className="hero-subheading">
+              <Typewriter 
+                text="A passionate Frontend Developer & UI/UX Designer with a focus on creating immersive web experiences." 
+                delay={50} 
+                infinite={false}
+              />
+            </p>
+            <motion.a 
+              href="#achievements" 
+              className="btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View My Work
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
-      <section className="about-preview">
+      <motion.section 
+        className="about-preview"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="container">
           <h2>About Me</h2>
           <p>I'm a passionate developer who loves creating interactive web experiences. Here you can find my latest work and accomplishments.</p>
-          <a href="/about" className="btn">Learn More About Me</a>
+          <motion.a 
+            href="/about" 
+            className="btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Learn More About Me
+          </motion.a>
         </div>
-      </section>
+      </motion.section>
 
       <section id="achievements" className="achievements">
         <div className="container">
           <h2 className="section-title">My Achievements</h2>
-          <AchievementForm onAdd={onAddAchievement} />
           <AchievementList achievements={achievements} />
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

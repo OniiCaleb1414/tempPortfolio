@@ -1,12 +1,32 @@
 .header {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(16, 14, 29, 0.95);
   padding: 20px 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  .header {
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+body.light-mode .header {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  body.light-mode .header {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .header .container {
@@ -30,7 +50,7 @@
   gap: 30px;
 }
 
-.nav a {
+.nav-link {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
@@ -38,11 +58,15 @@
   position: relative;
 }
 
-.nav a:hover {
+body.light-mode .nav-link {
+  color: #333;
+}
+
+.nav-link:hover {
   color: #ff8a00;
 }
 
-.nav a::after {
+.nav-link::after {
   content: '';
   position: absolute;
   width: 0;
@@ -53,7 +77,7 @@
   transition: width 0.3s;
 }
 
-.nav a:hover::after {
+.nav-link:hover::after {
   width: 100%;
 }
 
@@ -64,6 +88,7 @@
   border: none;
   cursor: pointer;
   padding: 5px;
+  z-index: 1001;
 }
 
 .menu-toggle span {
@@ -72,6 +97,10 @@
   background: white;
   margin: 3px 0;
   transition: 0.3s;
+}
+
+body.light-mode .menu-toggle span {
+  background: #333;
 }
 
 .menu-toggle.active span:nth-child(1) {
@@ -96,7 +125,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(16, 14, 29, 0.98);
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
@@ -104,6 +133,10 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s;
+  }
+  
+  body.light-mode .nav {
+    background: rgba(255, 255, 255, 0.98);
   }
   
   .nav-open {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Header.css';
 
 const Header = () => {
@@ -9,10 +10,27 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/projects", label: "Projects" },
+    { path: "/contact", label: "Contact" }
+  ];
+
   return (
-    <header className="header">
+    <motion.header 
+      className="header"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="container">
-        <Link to="/" className="logo">DevPortfolio</Link>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Link to="/" className="logo">DevPortfolio</Link>
+        </motion.div>
         
         <button 
           className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
@@ -25,13 +43,25 @@ const Header = () => {
         </button>
         
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-          <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link to="/projects" onClick={() => setIsMenuOpen(false)}>Projects</Link>
-          <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+          {navItems.map((item, index) => (
+            <motion.div
+              key={item.path}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Link 
+                to={item.path} 
+                onClick={() => setIsMenuOpen(false)}
+                className="nav-link"
+              >
+                {item.label}
+              </Link>
+            </motion.div>
+          ))}
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

@@ -11,22 +11,51 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   border-left: 4px solid #ff8a00;
   transition: transform 0.3s, box-shadow 0.3s;
-  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
 
-.achievement-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+body.light-mode .achievement-card {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 138, 0, 0.1), rgba(229, 46, 113, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.achievement-card:hover::before {
+  opacity: 1;
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .achievement-card h3 {
   color: #ff8a00;
   margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
 
 .achievement-card .date {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
+  display: block;
+  margin-top: 1rem;
+}
+
+body.light-mode .achievement-card .date {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 768px) {

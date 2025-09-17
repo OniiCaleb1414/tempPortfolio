@@ -216,3 +216,47 @@ body.light-mode .form-group textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* Curved Loop customizations */
+.curved-loop-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(255, 138, 0, 0.1), rgba(229, 46, 113, 0.1));
+  overflow: hidden;
+}
+
+body.light-mode .curved-loop-section {
+  background: linear-gradient(135deg, rgba(255, 138, 0, 0.05), rgba(229, 46, 113, 0.05));
+}
+
+.curved-loop-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.curved-loop-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #ff8a00;
+}
+
+.curved-loop-text {
+  font-size: 6rem;
+  fill: #ff8a00;
+  font-weight: 700;
+}
+
+body.light-mode .curved-loop-text {
+  fill: #e52e71;
+}
+
+.curved-loop-subtle {
+  font-size: 5rem;
+  fill: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+body.light-mode .curved-loop-subtle {
+  fill: rgba(51, 51, 51, 0.7);
+}

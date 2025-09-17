@@ -1,5 +1,6 @@
 import React from 'react';
 import './Pages.css';
+// import FallingText from '../components/FallingText';
 
 const About = () => {
   return (
@@ -29,7 +30,25 @@ const About = () => {
             </div>
           </div>
         </div>
+        {/* <FallingText
+  text={`React Bits is a library of animated and interactive React components designed to streamline UI development and simplify your workflow.`}
+  highlightWords={["React", "Bits", "animated", "components", "simplify"]}
+  highlightClass="highlighted"
+  trigger="hover"
+  backgroundColor="transparent"
+  wireframes={false}
+  gravity={0.56}
+  fontSize="2rem"
+  mouseConstraintStiffness={0.9}
+/> */}
       </div>
+      {/* <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+    <h1> Something about me</h1> */}
     </div>
   );
 };

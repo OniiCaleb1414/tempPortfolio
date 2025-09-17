@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import AchievementList from '../components/AchievementList';
 import Typewriter from '../components/Typewriter';
 import ParticlesBackground from '../components/ParticlesBackground';
+import CurvedLoop from '../components/CurvedLoop';
 import './Pages.css';
+import GradientText from '../components/GradientText';
 
 const Home = ({ achievements }) => {
   useEffect(() => {
@@ -59,13 +61,27 @@ const Home = ({ achievements }) => {
             className="hero-content"
             variants={itemVariants}
           >
+
+            <GradientText
+            colors={["#ff8a00", "#e52e71", "#40ffaa", "#4079ff"]}
+            animationSpeed={6}
+            showBorder={false}
+            className="hero-title"
+          >
+            Welcome to My Portfolio
+          </GradientText>
+
+
+
             <h1 className="hero-heading">
               <Typewriter 
-                text="Hello, I'm Alex Johnson" 
+                text="Hello, I'm Caleb Belay " 
                 delay={100} 
                 infinite={false}
               />
             </h1>
+
+           
             <p className="hero-subheading">
               <Typewriter 
                 text="A passionate Frontend Developer & UI/UX Designer with a focus on creating immersive web experiences." 
@@ -82,6 +98,20 @@ const Home = ({ achievements }) => {
               View My Work
             </motion.a>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Curved Loop Section */}
+      <section className="curved-loop-section">
+        <div className="curved-loop-container">
+          <h2 className="curved-loop-title">Creative Developer</h2>
+          <CurvedLoop 
+            marqueeText="✦ React ✦ JavaScript ✦ CSS ✦ UI/UX ✦ C++"
+            speed={2}
+            curveAmount={300}
+            className="curved-loop-text"
+            interactive={true}
+          />
         </div>
       </section>
 
@@ -110,6 +140,19 @@ const Home = ({ achievements }) => {
         <div className="container">
           <h2 className="section-title">My Achievements</h2>
           <AchievementList achievements={achievements} />
+        </div>
+      </section>
+
+      {/* Additional Curved Loop at the bottom */}
+      <section className="curved-loop-section">
+        <div className="curved-loop-container">
+          <CurvedLoop 
+            marqueeText="Let's create something amazing together ✦"
+            speed={1.5}
+            curveAmount={250}
+            className="curved-loop-subtle"
+            interactive={false}
+          />
         </div>
       </section>
     </motion.div>

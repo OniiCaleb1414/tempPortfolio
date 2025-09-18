@@ -1,6 +1,6 @@
 import React from 'react';
+import Cubes from '../components/Cubes';
 import './Pages.css';
-// import FallingText from '../components/FallingText';
 
 const About = () => {
   return (
@@ -10,8 +10,11 @@ const About = () => {
         <div className="about-content">
           <div className="about-text">
             <h2>My Journey</h2>
-            <p>Hello! I'm a passionate developer with experience in creating interactive web applications. I enjoy solving complex problems and turning ideas into reality through code.</p>
-            
+            <p>
+              Hello! I'm a passionate developer with experience in creating
+              interactive web applications. I enjoy solving complex problems and
+              turning ideas into reality through code.
+            </p>
             <h2>Skills</h2>
             <div className="skills">
               <span className="skill-tag">React</span>
@@ -22,33 +25,23 @@ const About = () => {
               <span className="skill-tag">Responsive Design</span>
             </div>
           </div>
-          
-          <div className="about-image">
-            {/* Placeholder for your photo */}
-            <div className="placeholder-image">
-              <span>Your Photo Here</span>
-            </div>
+
+          {/* Add Cubes on the side */}
+          <div style={{ height: '600px', position: 'relative' }}>
+            <Cubes
+              gridSize={8}
+              maxAngle={60}
+              radius={4}
+              borderStyle="2px dashed #5227FF"
+              faceColor="#1a1a2e"
+              rippleColor="#ff6b6b"
+              rippleSpeed={1.5}
+              autoAnimate={true}
+              rippleOnClick={true}
+            />
           </div>
         </div>
-        {/* <FallingText
-  text={`React Bits is a library of animated and interactive React components designed to streamline UI development and simplify your workflow.`}
-  highlightWords={["React", "Bits", "animated", "components", "simplify"]}
-  highlightClass="highlighted"
-  trigger="hover"
-  backgroundColor="transparent"
-  wireframes={false}
-  gravity={0.56}
-  fontSize="2rem"
-  mouseConstraintStiffness={0.9}
-/> */}
       </div>
-      {/* <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-    <h1> Something about me</h1> */}
     </div>
   );
 };

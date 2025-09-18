@@ -6,6 +6,7 @@ import ParticlesBackground from '../components/ParticlesBackground';
 import CurvedLoop from '../components/CurvedLoop';
 import './Pages.css';
 import GradientText from '../components/GradientText';
+import ShapeBlur from '../components/ShapeBlur'; // ✅ import ShapeBlur
 
 const Home = ({ achievements }) => {
   useEffect(() => {
@@ -54,24 +55,44 @@ const Home = ({ achievements }) => {
       variants={containerVariants}
       className="page"
     >
-      <section className="hero">
+      <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* ✅ Background Layers */}
         <ParticlesBackground />
-        <div className="container">
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0,
+          }}
+        >
+          <ShapeBlur
+            variation={0}
+            pixelRatioProp={window.devicePixelRatio || 1}
+            shapeSize={0.6}
+            roundness={0.5}
+            borderSize={0.05}
+            circleSize={0.5}
+            circleEdge={1}
+          />
+        </div>
+
+        {/* ✅ Foreground Content */}
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.div 
             className="hero-content"
             variants={itemVariants}
           >
-
             <GradientText
-            colors={["#ff8a00", "#e52e71", "#40ffaa", "#4079ff"]}
-            animationSpeed={6}
-            showBorder={false}
-            className="hero-title"
-          >
-            Welcome to My Portfolio
-          </GradientText>
-
-
+              colors={["#ff8a00", "#e52e71", "#40ffaa", "#4079ff"]}
+              animationSpeed={6}
+              showBorder={false}
+              className="hero-title"
+            >
+              Welcome to My Portfolio
+            </GradientText>
 
             <h1 className="hero-heading">
               <Typewriter 
@@ -81,7 +102,6 @@ const Home = ({ achievements }) => {
               />
             </h1>
 
-           
             <p className="hero-subheading">
               <Typewriter 
                 text="A passionate Frontend Developer & UI/UX Designer with a focus on creating immersive web experiences." 
@@ -89,6 +109,7 @@ const Home = ({ achievements }) => {
                 infinite={false}
               />
             </p>
+
             <motion.a 
               href="#achievements" 
               className="btn"

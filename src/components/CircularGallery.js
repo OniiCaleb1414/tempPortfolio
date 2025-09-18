@@ -2,7 +2,17 @@ import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl'
 import { useEffect, useRef } from 'react';
 
 import img1 from '../assets/images/AWARDS1.jpg';
-
+import Award2 from '../assets/images/AWARDS3.jpg';
+import HongKong1 from '../assets/images/HONGKONG1.jpg';
+import HongKong2 from '../assets/images/HONGKONG2.jpg';
+import MD1 from '../assets/images/MD1.jpg';
+import MD2 from '../assets/images/MD2.jpg';
+import MD3 from '../assets/images/MD3.jpg';
+import RACE1 from '../assets/images/RACE1.jpg';
+import UPPUA_speech1 from '../assets/images/UPPUA-speech.jpg';
+import UPPUA_speech2 from '../assets/images/UP-PUA-speech2.jpg';
+import BBYPNG from '../assets/images/BBYPIC1.jpg';
+import BBYUNC from '../assets/images/BBYUNC.jpg';
 
 
 
@@ -346,18 +356,18 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: img1 , text: 'Bridge' },
-      { image: `https://picsum.photos/seed/2/800/600?grayscale`, text: 'Desk Setup' },
-      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Waterfall' },
-      { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'Strawberries' },
-      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Deep Diving' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' },
-      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'Santorini' },
-      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'Blurry Lights' },
-      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'New York' },
-      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'Good Boy' },
-      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'Coastline' },
-      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: 'Palm Trees' }
+      { image: img1 , text: 'My Highschool award' },
+      { image: Award2 , text: 'My Highschool awards' },
+      { image: HongKong2, text: 'HongKong Ai partnership' },
+      {  image: HongKong1, text: 'HongKong Ai partnership' },
+      { image: MD1, text: 'Looking Sophisticated' },
+      { image: MD2, text: 'oooooohh!' },
+      { image: MD3, text: 'Investor Material' },
+      { image: RACE1, text: 'He is a runner ' },
+      { image: UPPUA_speech1 , text: 'My Pre-Uni Graduation' },
+      { image: UPPUA_speech2, text: 'Good Boy' },
+      { image: BBYPNG, text: 'Future Coder' },
+      { image: BBYUNC, text: 'He is ready to retire' }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Typewriter.css';
 
 const Typewriter = ({ 
-  text, 
+  text = "", 
   delay = 100, 
   infinite = false,
   onComplete,
@@ -16,7 +16,7 @@ const Typewriter = ({
   useEffect(() => {
     let timeout;
 
-    if (currentIndex <= text.length && !isDeleting) {
+    if (currentIndex < text.length && !isDeleting) {
       // Typing phase
       timeout = setTimeout(() => {
         setCurrentText(prevText => prevText + text[currentIndex]);

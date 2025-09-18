@@ -1,10 +1,15 @@
 import React from 'react';
 import Cubes from '../components/Cubes';
+import CircularGallery from '../components/CircularGallery';
 import './Pages.css';
 
 const About = () => {
+  const galleryStyle = { height: '600px', position: 'relative', marginBottom: '2rem' };
   return (
-    <div className="page">
+    <div className="page" style={{ position: 'relative' }}>
+      <div style={galleryStyle}>
+        <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+      </div>
       <div className="container">
         <h1>About Me</h1>
         <div className="about-content">

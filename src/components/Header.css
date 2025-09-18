@@ -10,7 +10,7 @@
 
 @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
   .header {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(16, 14, 29, 0.6);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }

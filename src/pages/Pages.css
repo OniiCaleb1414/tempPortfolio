@@ -84,17 +84,19 @@ body.light-mode .about-preview {
 }
 
 .skill-tag {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(16, 14, 29, 0.6);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s;
 }
 
 body.light-mode .skill-tag {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
   color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .skill-tag:hover {

@@ -176,6 +176,7 @@ const Home = ({ achievements }) => {
           />
         </div>
       </section>
+      
     </motion.div>
   );
 };

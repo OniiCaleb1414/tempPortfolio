@@ -296,7 +296,8 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       scrollSpeed = 2,
-      scrollEase = 0.05
+      scrollEase = 0.05,
+      responsive = true
     } = {}
   ) {
     document.documentElement.classList.remove('no-js');
@@ -312,7 +313,10 @@ class App {
     this.createScene();
     this.onResize();
     this.createGeometry();
-    this.createMedias(items, bend, textColor, borderRadius, font);
+    const isMobile = responsive && (typeof window !== 'undefined') && window.innerWidth < 900;
+    this.initialBend = bend;
+    this.responsive = responsive;
+    this.createMedias(items, isMobile ? 0 : bend, textColor, borderRadius, font);
     this.update();
     this.addEventListeners();
   }
@@ -420,6 +424,15 @@ class App {
     if (this.medias) {
       this.medias.forEach(media => media.onResize({ screen: this.screen, viewport: this.viewport }));
     }
+
+    // Toggle between panel (bend 0) on mobile and circular on desktop
+    if (this.responsive && this.medias) {
+      const isMobile = window.innerWidth < 900;
+      const targetBend = isMobile ? 0 : this.initialBend;
+      this.medias.forEach(m => {
+        m.bend = targetBend;
+      });
+    }
   }
   update() {
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
@@ -471,15 +484,16 @@ export default function CircularGallery({
   borderRadius = 0.05,
   font = 'bold 30px Figtree',
   scrollSpeed = 2,
-  scrollEase = 0.05
+  scrollEase = 0.05,
+  responsive = true
 }) {
   const containerRef = useRef(null);
   useEffect(() => {
-    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, responsive });
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, responsive]);
   return <div className="circular-gallery" ref={containerRef} />;
 }
 
